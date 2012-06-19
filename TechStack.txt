@@ -1,0 +1,15 @@
+Stack
+
+DB:
+	MongoDB (installed)
+	
+Back End:
+	NodeJS (installed)
+	MongoJS (installed)
+	
+Web:
+	Express (installed)
+	Jade (installed)
+	LESS (installed)
+	Bootstrap (installed)
+	

@@ -1,0 +1,64 @@
+@import '/public/css/lib/elements';
+@import '/public/css/lib/includes';
+
+body {
+	background-color: @bodyBgColor;
+}
+.my-container {
+	margin-top: @appMarginTop;
+}
+
+.my-app {
+	background-color: @appBgColor;
+	.drop-shadow(0px, 0px, 15px, 0.25);
+	.rounded(7px);
+	
+	overflow: hidden;
+}
+
+.bulletless {
+	margin: 10px 0;
+	list-style-type: none;
+	
+	li {
+		list-style: none;
+		margin-bottom: 10px;
+		
+		a.btn {
+			box-sizing: border-box;
+			width:100%;
+		}
+	}
+}
+
+.footer {
+	p {
+		line-height: 40px;
+		text-align: center;
+		margin:0;
+	}
+} 
+
+.navbar-bottom {
+	margin-bottom: 0;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.no-height {
+  height: 0;
+}
+
+.form-login,
+.form-register {
+  overflow: hidden;
+}
+
+/* Bootstrap overrides */
+.navbar-inner {
+	.rounded(0px);
+	.box-shadow(0 0 0 #FFF);
+}
+/* End Bootstrap overrides */

@@ -1,0 +1,74 @@
+/*---------------------------------------------------
+    LESS Elements 0.6
+  ---------------------------------------------------
+    A set of useful LESS mixins by Dmitry Fadeyev
+    Special thanks for mixin suggestions to:
+      Kris Van Herzeele,
+      Benoit Adam,
+      Portenart Emile-Victor,
+      Ryan Faerman
+
+    More info at: http://lesselements.com
+-----------------------------------------------------*/
+body {
+  background-color: #f8f8f8;
+}
+.my-container {
+  margin-top: 25px;
+}
+.my-app {
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  overflow: hidden;
+}
+.bulletless {
+  margin: 10px 0;
+  list-style-type: none;
+}
+.bulletless li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+.bulletless li a.btn {
+  box-sizing: border-box;
+  width: 100%;
+}
+.footer p {
+  line-height: 40px;
+  text-align: center;
+  margin: 0;
+}
+.navbar-bottom {
+  margin-bottom: 0;
+}
+.align-center {
+  text-align: center;
+}
+.no-height {
+  height: 0;
+}
+.form-login,
+.form-register {
+  overflow: hidden;
+}
+/* Bootstrap overrides */
+.navbar-inner {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 0 0 #ffffff;
+  -moz-box-shadow: 0 0 0 #ffffff;
+  box-shadow: 0 0 0 #ffffff;
+}
+/* End Bootstrap overrides */

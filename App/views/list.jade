@@ -1,0 +1,15 @@
+h1= title
+- if (!list.tasks || list.tasks.length == 0)
+    h3 Start adding tasks!
+
+form(action='/lists/new-task', method='post')
+    input(type='hidden', name='_id', id='list-id', value='#{list._id}')
+    input(type='text', name='TodoItem', id='new-todo')
+    &nbsp;
+    button(type='submit', name='AddTodo', class='btn') Add New Todo
+
+- if (list.tasks && list.tasks.length)
+    h3 Your ToDo tasks:
+    ul
+    each task in list.tasks
+        li= task.name

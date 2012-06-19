@@ -1,0 +1,9 @@
+extends layout
+
+block content
+	h1 Add New List
+	
+	form(action='/lists/add', method='post')
+	    input(type='text', name='ListName', id='list-name')
+	    &nbsp;
+	    button(type='submit', name='AddList', class='btn') Add New List

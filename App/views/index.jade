@@ -1,0 +1,9 @@
+h1= title
+p Welcome to #{title}
+a(href="/lists/add") Add New List
+
+- if (lists)
+	ul.bulletless
+		- each list in lists
+			li
+				a(href='/lists/' + list._id, class='btn')= list.name

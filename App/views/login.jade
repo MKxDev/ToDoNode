@@ -1,0 +1,47 @@
+extends layout
+
+block content
+	h1.align-center Welcome to ToDo Node!
+	- var retUrl = (returnUrl ? "?returnUrl=" + returnUrl : "")
+	br
+	div.form-login
+		h3 Please Login
+		form(act.ion='/login#{retUrl}', method='post', class='form-horizontal')
+			fieldset
+				.control-group
+					label.control-label Email:
+					.controls
+						input(type='email', name='username', id='username', class = 'input-xlarge')
+						
+				.control-group
+					label.control-label Password:
+					.controls
+						input(type='password', name='password', id='password', class = 'input-xlarge')
+						
+				.form-actions
+					button(type='submit', name='Login', class='btn btn-primary') Login
+					span  or 
+					a(href="javascript:// Register", class="show-reg") Register
+	
+	div.form-register.no-height
+		h3 Please Register
+		form(action='/register#{retUrl}', method='post', class='form-horizontal')
+			fieldset
+				.control-group
+					label.control-label Email:
+					.controls
+						input(type='email', name='email', id='newEmail', class = 'input-xlarge')
+				
+				.control-group
+					label.control-label Password:
+					.controls
+						input(type='password', name='password', id='newPassword', class = 'input-xlarge')
+				
+				.form-actions
+					button(type='submit', name='Register', class='btn btn-primary') Register
+					span  or 
+					a(href="javascript:// Login", class="show-login") Login
+				
+block append inline-scripts
+	script(type='text/javascript')
+		TD.mod.Login.init();

@@ -1,0 +1,41 @@
+!!!
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/css/bootstrap.css')
+		link(rel='stylesheet', href='/css/bootstrap-responsive.min.css')
+		link(rel='stylesheet', href='/css/style.css')
+		
+	.container-fluid.my-container
+		.row-fluid
+			.span3
+				&nbsp;
+			.span6.my-app
+				.navbar
+					.navbar-inner
+						.container-fluid
+							a.brand(href="/") ToDo Node
+							- if (isAuthenticated)
+								ul.nav.pull-right
+									li.dropdown
+										a(href='#', class='dropdown-toggle', data-toggle='dropdown') Welcome back!
+											b.caret
+										ul.dropdown-menu
+											li
+												a(href='/logout') Log Out
+				.container-fluid
+					block content
+					// body!= body
+				.navbar.navbar-bottom
+					.navbar-inner
+						.container-fluid.footer
+							p Copyright © 2012
+			.span3
+				&nbsp;
+	
+	.scripts
+		script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
+		script(type='text/javascript', src='/js/bootstrap.min.js')
+		script(type='text/javascript', src='/js/site.js')
+	
+	block inline-scripts
