@@ -3,10 +3,8 @@ TD.mod = {};
 
 (function($) {
 	TD.mod.Login = {
-		duration: 250
+		duration: 350
 		, init: function() {
-			// DEBUG
-			console.log('Initting Login!');
 			var self = this;
 			
 			$('.show-reg').click(function(ev) {
@@ -16,31 +14,22 @@ TD.mod = {};
 			$('.show-login').click(function(ev) {
 				self.showLogin();
 			});
+			
+			$('.form-register').hide();
 		}
 		, showRegistration: function() {
 			var self = this;
 			
-			$('.form-login').animate({
-				height: 'toggle'
-			}, self.duration, 'linear');
-			
-			$('.form-register').animate({
-				height: 'toggle'
-			}, self.duration, 'linear');
-			
-			// $('.form-login').hide(self.duration);
-			// $('.form-register').show(self.duration);
+			$('.form-login').slideUp(self.duration, function() {
+				$('.form-register').slideDown(self.duration);
+			});
 		}
 		, showLogin: function() {
 			var self = this;
 			
-			$('.form-login').animate({
-				height: 'toggle'
-			}, self.duration, 'linear');
-			
-			$('.form-register').animate({
-				height: 'toggle'
-			}, self.duration, 'linear');
+			$('.form-register').slideUp(self.duration, function() {
+				$('.form-login').slideDown(self.duration);
+			});
 		}
 	};
 })(jQuery);

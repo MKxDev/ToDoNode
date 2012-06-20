@@ -20,7 +20,7 @@ function auth(params) {
         function(email, password, done) {
             // DEBUG
             console.log('*** Using LocalStrategy to auth');
-
+            var errorMessage = 'This user and password combination could not be found';
             // asynchronous verification, for effect...
             process.nextTick(function () {
                 // Find the user by username.  If there is no user with the given
@@ -29,20 +29,18 @@ function auth(params) {
                 // authenticated `user`.
                 userProvider.findByEmail(email, function(err, user) {
                     if (err) { return done(err); }
-                    if (!user) { return done(null, false, { message: 'Unkown user ' + email }); }
+                    if (!user) { return done(null, false, { message: errorMessage }); }
                     
                     user.authenticate(password, function(auth) {
                     	// DEBUG
 	                	console.log('Authed: ', auth);
                     	
 	                    if (!auth) {
-	                    	return done(null, false, { message: 'Invalid password' });
+	                    	return done(null, false, { message: errorMessage });
 	                	}
 	                    	
 	                	return done(null, user);
                     });
-                    
-                    // if (user.password != password) { return done(null, false, { message: 'Invalid password' }); }
                 });
             });
         }

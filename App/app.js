@@ -40,9 +40,6 @@ app.configure(function(){
 
 app.dynamicHelpers({
 	user: function(req, res) {
-		// DEBUG
-		console.log('User helper was called: ');
-		
 		return req.user;
 	},
 	isAuthenticated: function(req, res) {

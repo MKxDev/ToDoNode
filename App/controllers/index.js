@@ -9,13 +9,14 @@ function controllers(params) {
     	var user = req.user;
         var listProvider = new providers.ListProvider();
         
+        // DEBUG
+        console.log('Displaying lists for: ', user._id, '\nUser: ', user);
+        
         listProvider.findAll({userId: user._id, count: 10}, function(err, lists) {
-            if (err) {
-                console.log('Err: ', err);
-                throw new Error(err);
-            }
-            
-            res.render('index', { title: 'ToDoNode!', lists: lists });
+            res.render('index', {
+            	title: 'ToDoNode!', 
+            	lists: lists, 
+            	errorMessage: err});
         });
     }
 
@@ -70,7 +71,11 @@ function controllers(params) {
     controllers.getLogin = function(req, res) {                
     	var returnUrl = req.query.returnUrl || '';
     	
-    	res.render('login', {title: 'Welcome to ToDo Node!', returnUrl: encodeURIComponent(returnUrl)});
+    	res.render('login', {
+    		title: 'Welcome to ToDo Node!', 
+    		returnUrl: encodeURIComponent(returnUrl),
+    		errorMessage: req.flash('error')
+		});
     };
 
     controllers.postLogin = function(req, res, next) {
@@ -91,21 +96,34 @@ function controllers(params) {
     controllers.register = function(req, res) {
     	var userProvider = new providers.UserProvider();
     	
-    	if (!req.body.password) {
-    		// TODO: display an error
+    	// TODO: Move this to a validation module
+    	if (!req.body.newEmail) {
+    		req.flash('error', 'Please enter a valid email address');
+    		
     		res.redirect('/login');
     		return;
     	}
+    	if (!req.body.newPassword) {
+    		req.flash('error', 'Password is required');
+    		
+    		res.redirect('/login');
+    		return;
+    	}
+    	if (req.body.newPassword != req.body.newPassword2) {
+    		req.flash('error', 'Please enter matching passwords');
+    		
+    		res.redirect('/login');
+    		return;
+    	}
+    	// END TODO: Move this to a validation module
     	
-    	userProvider.addUser(req.body.email, req.body.password, function(err, user) {
+    	userProvider.addUser(req.body.newEmail, req.body.newPassword, function(err, user) {
     		if (err) {
-    			// log
-    			console.log('ERR97: ', err);
+    			req.flash('error', err);
     			
-    			// TODO: Display errors
-    			res.redirect('/');
+    			res.redirect('/login');
     		} else {
-    			// Authenticate the user right here
+    			// Authenticate the user after registration
     			req.logIn(user, function(err) {
     				var retUrl = req.query.returnUrl || '/';
 	                return res.redirect(retUrl);
