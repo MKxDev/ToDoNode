@@ -1,6 +1,4 @@
 function controllers(params) {
-    console.log('Initializing controllers');
-
     var providers = params.providers;
     var passport = params.passport;
     var sessions = require('sessions');
@@ -8,9 +6,6 @@ function controllers(params) {
     controllers.index = function(req, res) {
     	var user = req.user;
         var listProvider = new providers.ListProvider();
-        
-        // DEBUG
-        console.log('Displaying lists for: ', user._id, '\nUser: ', user);
         
         listProvider.findAll({userId: user._id, count: 10}, function(err, lists) {
             res.render('index', {
@@ -34,8 +29,7 @@ function controllers(params) {
         	name: listReq.ListName
     	}, function(err, list) {
             if (err) {
-            	// TODO: Display the error
-            	console.log('Add list err: ' + err);            	
+            	// TODO: Display the error            	
                 res.redirect('/lists/add');
             }
             else {

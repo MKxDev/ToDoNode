@@ -1,6 +1,4 @@
 function providers(params) {
-    console.log('Initializing providers');
-    
     var models = params.models;
     var mongoose = params.mongoose;
     var utils = params.utils;
@@ -83,7 +81,7 @@ function providers(params) {
         },
         findById: function(id, callback) {
             var oId = ObjectId(id);
-            User.find({'_id': oId}, callback);
+            User.findOne({'_id': oId}, callback);
         },
         findByEmail: function(email, cb) {
             User.findOne({email: email}, cb);

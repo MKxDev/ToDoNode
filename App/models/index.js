@@ -2,8 +2,6 @@ function models(params) {
 	var mongoose = params.mongoose;
 	var utils = params.utils;
 	
-    console.log('Initializing models. Mongoose: ' + mongoose);
-    
     var	Schema = mongoose.Schema,
     	ObjectId = mongoose.Schema.ObjectId;
     	

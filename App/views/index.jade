@@ -1,9 +1,9 @@
 extends layout
 
 block content
-	h1= title
-	p Welcome to #{title}
-	a(href="/lists/add") Add New List
+	h1.align-center Welcome to #{title}
+	br
+	include _newList
 	
 	- if (lists)
 		ul.bulletless

@@ -71,4 +71,10 @@ body {
   -moz-box-shadow: 0 0 0 #ffffff;
   box-shadow: 0 0 0 #ffffff;
 }
+.input-100 {
+  width: 100%;
+}
+.input-95 {
+  width: 95%;
+}
 /* End Bootstrap overrides */

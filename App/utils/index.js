@@ -3,9 +3,6 @@ var utils = {
 	getRandom: function(min, max) {
 		var rnd = Math.floor(Math.random() * (max - min) + min);
 		
-		// debug
-		console.log('Random: ', rnd);
-		
 		return rnd;
 	},
 	generateString: function(length) {
@@ -14,9 +11,6 @@ var utils = {
 	
 	    for(var i=0; i < length; i++ )
 	        text += possible.charAt(Math.floor(Math.random() * possible.length));
-		
-		// DEBUG
-		console.log('Random str: ', text);
 		
 		return text;
 	},

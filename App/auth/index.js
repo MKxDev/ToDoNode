@@ -1,7 +1,4 @@
 function auth(params) {
-    // DEBUG
-    console.log('Initializing passport');
-
     var providers = params.providers;
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
@@ -18,8 +15,6 @@ function auth(params) {
 
     passport.use(new LocalStrategy(
         function(email, password, done) {
-            // DEBUG
-            console.log('*** Using LocalStrategy to auth');
             var errorMessage = 'This user and password combination could not be found';
             // asynchronous verification, for effect...
             process.nextTick(function () {
@@ -32,9 +27,6 @@ function auth(params) {
                     if (!user) { return done(null, false, { message: errorMessage }); }
                     
                     user.authenticate(password, function(auth) {
-                    	// DEBUG
-	                	console.log('Authed: ', auth);
-                    	
 	                    if (!auth) {
 	                    	return done(null, false, { message: errorMessage });
 	                	}

@@ -17,7 +17,10 @@ var controllers = require('./controllers')({providers: providers, passport: pass
 var routes = require('./routes.js');
 
 var app = module.exports = express.createServer();
-var pubDir = __dirname + '/public'; 
+var pubDir = __dirname + '/public';
+
+// DEBUG
+console.log('Pub dir: ', pubDir); 
 
 // Configuration
 app.configure(function(){
